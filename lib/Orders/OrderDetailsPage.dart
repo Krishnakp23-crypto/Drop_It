@@ -14,12 +14,18 @@ import 'package:intl/intl.dart';
 
 
 String getOrderId="";
-class OrderDetails extends StatelessWidget {
+class OrderDetails extends StatefulWidget {
  final String orderID;
  OrderDetails({Key key , this.orderID}) : super(key: key);
+
+  @override
+  _OrderDetailsState createState() => _OrderDetailsState();
+}
+
+class _OrderDetailsState extends State<OrderDetails> {
   @override
   Widget build(BuildContext context) {
-    getOrderId = orderID;
+    getOrderId = widget.orderID;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -27,7 +33,7 @@ class OrderDetails extends StatelessWidget {
             future: DropItApp.firestore
                     .collection(DropItApp.collectionUser)
                     .doc(DropItApp.sharedPreferences.getString(DropItApp.userUID))
-                    .collection(DropItApp.collectionOrders).doc(orderID).get(),
+                    .collection(DropItApp.collectionOrders).doc(widget.orderID).get(),
             builder: (c, snapshot)
             {
               Map dataMap;

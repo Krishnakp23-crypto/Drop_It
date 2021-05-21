@@ -81,13 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Material(
       child: Container(
         decoration: new BoxDecoration(
-          gradient: new LinearGradient(
-             colors: [Color(0xFFFDBE3B), Color(0xFF5C4057)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-          ),
+            color: Colors.white
         ),
       
        child: Center(
@@ -95,10 +89,9 @@ class _SplashScreenState extends State<SplashScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("images/welcome.png"),
-            SizedBox(height: 20.0),
             Text(
-              "Drop IT",
-              style: TextStyle(color: Colors.white ),
+              "DROP IT",
+              style: TextStyle(color: Color(0xFF5C4057),height: 30.0,fontWeight: FontWeight.bold),
            ),
           ],
         ),

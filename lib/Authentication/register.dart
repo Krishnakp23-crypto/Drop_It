@@ -33,6 +33,7 @@ class _RegisterState extends State<Register>
     double _screenWidth = MediaQuery.of(context).size.width, _screenHeight = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
+        margin: EdgeInsets.all(20.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -88,11 +89,7 @@ class _RegisterState extends State<Register>
            SizedBox(
              height:30.0,
            ),
-           Container(
-             height: 4.0,
-             width: _screenWidth * 0.8,
-             color: Colors.pink,
-           ),
+
            SizedBox(
              height: 15.0,
            ),

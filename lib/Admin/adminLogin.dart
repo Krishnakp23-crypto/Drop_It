@@ -15,18 +15,12 @@ class AdminSignInPage extends StatelessWidget {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFF5C4057), Color(0xFFFDBE3B)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-            ),
+            color: Color(0xFF5C4057)
           ),
         ),
         title: Text(
           "DROP IT",
-          style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
+          style: TextStyle(fontSize: 40.0, color: Colors.white, fontFamily: "Poppins" ),
 
         ),
         centerTitle: true,
@@ -47,6 +41,8 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final TextEditingController _adminIDTextEditingController = TextEditingController();
   final TextEditingController _passwordTextEditingController = TextEditingController();
+
+
   
 
 
@@ -56,13 +52,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
     return SingleChildScrollView(
       child: Container(
         decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFFFDBE3B), Color(0xFF5C4057)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-            ),
+            color: Color(0xFFFDBE3B)
           ),
         child:Column(
          mainAxisSize: MainAxisSize.max,
@@ -77,8 +67,8 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Admin",
-              style: TextStyle(color: Color(0xFF5C4057),fontSize: 28.0,fontWeight: FontWeight.bold ),
+              "Admin Login",
+              style: TextStyle(color: Colors.white,fontSize: 28.0,fontWeight: FontWeight.bold ),
             ),
           ),
            Form(
@@ -88,7 +78,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
                   CustomTextField(
                     controller: _adminIDTextEditingController,
                     data: Icons.person,
-                    hintText: "Id",
+                    hintText: "Admin Id",
                     isObsecure: false,
                   ),
                    CustomTextField(
@@ -122,7 +112,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
            ),
            Container(
              height: 4.0,
-             width: _screenWidth * 0.8,
+             width: _screenWidth * 0.1,
              color:Color(0xFF5C4057),
            ),
            SizedBox(

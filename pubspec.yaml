@@ -36,6 +36,10 @@ flutter:
     - family: Signatra
       fonts:
         - asset: assets/fonts/Signatra.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+
 
   assets:
     - images/Group 1.png
@@ -43,6 +47,7 @@ flutter:
     - images/login.png
     - images/admin.png
     - images/cash.png
+    - assets/images/logo.png
 
 
 

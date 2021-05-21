@@ -28,18 +28,12 @@ class _StoreHomeState extends State<StoreHome> {
         appBar: AppBar(
           flexibleSpace: Container(
           decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFFFDBE3B),Color(0xFF5C4057)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-            ),
+            color: Color(0xFFFDBE3B),
           ),
         ),
         title: Text(
           "DROP IT",
-          style: TextStyle(fontSize: 55.0, color:Colors.white, fontFamily: "Signatra" ),
+          style: TextStyle(fontSize: 30.0, color: Color(0xFF5C4057), fontFamily: "Poppins" ),
 
         ),
         centerTitle: true,
@@ -126,7 +120,7 @@ Widget sourceInfo(ItemModel model, BuildContext context,
     child: Padding(
       padding: EdgeInsets.all(6.0),
       child: Container(
-        height: 190.0,
+        height: 250.0,
         width: width,
         child: Row(
           children: [
@@ -323,7 +317,7 @@ addItemToCart(String shortInfoAsID, BuildContext context)
     .update({
       DropItApp.userCartList: tempCartList,
     }).then((v){
-      Fluttertoast.showToast(msg: "Item added succesfullly.");
+      Fluttertoast.showToast(msg: "Item added to cart.");
       DropItApp.sharedPreferences.setStringList(DropItApp.userCartList, tempCartList);
       Provider.of<CartItemCounter>(context, listen: false).displayResult();
     });

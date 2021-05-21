@@ -43,22 +43,16 @@ class _SearchProductState extends State<SearchProduct> {
               Route route = MaterialPageRoute(builder: (c) => StoreHome());
               Navigator.pushReplacement(context, route);
             },
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.arrow_back,color: Colors.white,),
           ),
           flexibleSpace: Container(
             decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [Color(0xFFFDBE3B),Color(0xFF5C4057)],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0,0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp,
-              ),
+              color: Color(0xFF5C4057),
             ),
           ),
          title: Text(
           "DROP IT",
-          style: TextStyle(fontSize: 55.0, color:Colors.white, fontFamily: "Signatra" ),
+          style: TextStyle(fontSize: 30.0, color:Colors.white, fontFamily: "Poppins" ),
 
          ),
           centerTitle: true,
@@ -66,7 +60,7 @@ class _SearchProductState extends State<SearchProduct> {
           Stack(
             children: [
               IconButton(
-                icon: Icon(Icons.shopping_cart,color: Colors.pink,), 
+                icon: Icon(Icons.shopping_cart,color: Colors.white70,),
                 onPressed:()
                 {
                   Route route = MaterialPageRoute(builder: (c) => CartPage());
@@ -125,7 +119,7 @@ class _SearchProductState extends State<SearchProduct> {
                           prefixIcon: Icon(Icons.search),
                           hintText: "Search here",
                           hintStyle: TextStyle(
-                            fontFamily: 'Signatra', color: Colors.blueGrey,
+                            fontFamily: 'Poppins', color: Colors.blueGrey, fontWeight: FontWeight.normal
                           ),
                         ),
                       ),

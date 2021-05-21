@@ -33,17 +33,21 @@ class _LoginState extends State<Login>
          mainAxisSize: MainAxisSize.max,
          children: [
            Container(
+          margin: EdgeInsets.all(30),
              child: Image.asset(
-               "images/login.png",
+               "assets/images/logo.png",
                height: 240.0,
                width: 240.0,
              ),
            ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(20.0),
             child: Text(
-              "Login to your account",
-              style: TextStyle(color: Colors.white),
+              "LOGIN",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ),
            Form(
