@@ -40,18 +40,12 @@ class _ProductPageState extends State<ProductPage> {
          ),
          flexibleSpace: Container(
           decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFFFDBE3B)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-            ),
+            color: Color(0xFFFDBE3B),
           ),
          ),
          centerTitle: true,
          title: Text(
-          "DROP IT",
+          "DROP IT product page",
           style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
 
          ),

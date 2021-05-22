@@ -44,13 +44,13 @@ class _CartPageState extends State<CartPage> {
             Navigator.pushReplacement(context, route);
           } 
         },
-        label: Text("Check out"),
+        label: Text("Confirm Order"),
         backgroundColor: Color(0xFF5C4057),
         icon: Icon(Icons.navigate_next),
       ), 
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back,color: Color(0xFF5C4057),),
           onPressed: ()
           {
             Route route = MaterialPageRoute(builder: (c) => StoreHome());
@@ -73,7 +73,7 @@ class _CartPageState extends State<CartPage> {
         ),
         centerTitle: true,
         title: Text(
-          "DROP IT",
+          "DROP IT cart",
           style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
 
         ),
@@ -81,7 +81,7 @@ class _CartPageState extends State<CartPage> {
           Stack(
             children: [
               IconButton(
-                icon: Icon(Icons.shopping_cart,color: Colors.pink,), 
+                icon: Icon(Icons.shopping_cart,color: Color(0xFF5C4057)),
                 onPressed:()
                 {
                   Route route = MaterialPageRoute(builder: (c) => CartPage());
