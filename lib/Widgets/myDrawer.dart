@@ -16,15 +16,9 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-           padding: EdgeInsets.only(top:25.0, bottom: 10.0),
+           padding: EdgeInsets.only(left: 10.0,bottom: 10.0),
            decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [Color(0xFFFDBE3B),Color(0xFF5C4057) ],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0,0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp,
-              ),
+              color: Colors.white,
             ),
             child: Column(
               children: [
@@ -44,7 +38,7 @@ class MyDrawer extends StatelessWidget {
                 SizedBox(height:10.0,),
                 Text(
                  DropItApp.sharedPreferences.getString(DropItApp.userName),
-                 style: TextStyle(color: Color(0xFF5C4057), fontSize: 35.0, fontFamily: "Signatra" ),
+                 style: TextStyle(color: Color(0xFF5C4057), fontSize: 35.0, fontFamily: "Poppins-Medium",),
                 ),
               ],
             ),
@@ -53,25 +47,19 @@ class MyDrawer extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 1.0),
             decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [Color(0xFFFDBE3B),Color(0xFF5C4057)],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0,0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp,
-              ),
+              color: Colors.white,
             ),
             child: Column(
               children: [
                 ListTile(
                   leading: Icon(Icons.home,color: Color(0xFF5C4057),),
-                  title: Text("Home",style: TextStyle(color: Color(0xFF5C4057)),),
+                  title: Text("Home",style: TextStyle(color: Color(0xFF5C4057),fontFamily: "Poppins-Medium"),),
                   onTap: (){
                     Route route = MaterialPageRoute(builder: (c) => StoreHome());
                     Navigator.pushReplacement(context, route);
                   },
                 ),
-                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 2.0,),
 
                 ListTile(
                   leading: Icon(Icons.reorder,color: Color(0xFF5C4057),),
@@ -81,7 +69,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacement(context, route);
                   },
                 ),
-                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 2.0,),
 
                 ListTile(
                   leading: Icon(Icons.shopping_cart,color: Color(0xFF5C4057),),
@@ -91,7 +79,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacement(context, route);
                   },
                 ),
-                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 2.0,),
 
                ListTile(
                   leading: Icon(Icons.search,color: Color(0xFF5C4057),),
@@ -101,7 +89,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacement(context, route);
                   },
                 ),
-                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 2.0,),
 
                 ListTile(
                   leading: Icon(Icons.add_location,color: Color(0xFF5C4057),),
@@ -111,7 +99,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacement(context, route);
                   },
                 ),
-                Divider(height: 10.0,color: Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color: Color(0xFF5C4057),thickness: 2.0,),
 
                 ListTile(
                   leading: Icon(Icons.exit_to_app,color: Color(0xFF5C4057),),
@@ -123,7 +111,7 @@ class MyDrawer extends StatelessWidget {
                     });
                   },
                 ),
-                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 6.0,),
+                Divider(height: 10.0,color:  Color(0xFF5C4057),thickness: 2.0,),
 
               ],
             ),

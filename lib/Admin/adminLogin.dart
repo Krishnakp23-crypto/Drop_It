@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/Admin/adminVeiw.dart';
+import 'package:e_shop/Admin/adminStockDetails.dart';
 import 'package:e_shop/Authentication/authenication.dart';
 import 'package:e_shop/Widgets/customTextField.dart';
 import 'package:e_shop/DialogBox/errorDialog.dart';
@@ -138,11 +138,11 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
       snapshot.docs.forEach((result) {
        if(result.get("id") !=_adminIDTextEditingController.text.trim())
         {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text("your id is not correct")));
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Your ID is not correct")));
         }
         else if(result.get("password") !=_passwordTextEditingController.text.trim())
         {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text("your password is not correct")));
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Your password is not correct")));
         }
         else
         {
@@ -151,7 +151,7 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
             _adminIDTextEditingController.text = "";
             _passwordTextEditingController.text = "";
           });
-          Route route = MaterialPageRoute(builder: (c) => adminveiw());
+          Route route = MaterialPageRoute(builder: (c) => StockDetails());
           Navigator.pushReplacement(context, route);
         }
       });

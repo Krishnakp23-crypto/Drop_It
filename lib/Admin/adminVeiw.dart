@@ -17,13 +17,7 @@ class adminveiw extends StatelessWidget {
          appBar: AppBar(
            flexibleSpace: Container(
              decoration: new BoxDecoration(
-               gradient: new LinearGradient(
-                 colors: [Color(0xFFFDBE3B), Color(0xFF5C4057)],
-                 begin: const FractionalOffset(0.0, 0.0),
-                 end: const FractionalOffset(1.0,0.0),
-                 stops: [0.0, 1.0],
-                 tileMode: TileMode.clamp,
-               ),
+               color: Color(0xFF5C4057),
              ),
            ),
 

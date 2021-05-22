@@ -73,8 +73,8 @@ class _CartPageState extends State<CartPage> {
         ),
         centerTitle: true,
         title: Text(
-          "DROP IT cart",
-          style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
+          "Cart",
+          style: TextStyle(fontSize: 30.0, color:Color(0xFF5C4057), fontFamily: "Poppins" ),
 
         ),
         actions: [

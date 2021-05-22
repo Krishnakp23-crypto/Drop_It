@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import '../Widgets/loadingWidget.dart';
 import '../Widgets/searchBox.dart';
 import '../Models/item.dart';
+import '../main.dart';
 
 double width;
 
@@ -45,21 +46,25 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                colors: [Colors.pink, Colors.lightGreenAccent],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(1.0,0.0),
-                stops: [0.0, 1.0],
-                tileMode: TileMode.clamp,
-              ),
+              color: Color(0xFF5C4057),
             ),
           ),
           title: Text(
-            "DROP IT",
-            style: TextStyle(fontSize: 55.0, color:Colors.white, fontFamily: "Signatra" ),
+            "Add Item",
+            style: TextStyle(fontSize: 30.0, color:Colors.white, fontFamily: "Poppins" ),
 
           ),
           centerTitle: true,
+          actions: [
+            TextButton(
+              child: Text("Logout", style:TextStyle(color: Color(0xFFFDBE3B), fontSize: 16.0, fontWeight: FontWeight.bold,),),
+              onPressed: ()
+              {
+                Route route = MaterialPageRoute(builder: (c) => SplashScreen());
+                Navigator.pushReplacement(context, route);
+              },
+            ),
+          ],
 
         ),
         body: CustomScrollView(
@@ -246,18 +251,18 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
         builder: (con)
         {
           return SimpleDialog(
-            title: Text("Item Image", style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),),
+            title: Text("Item Image", style: TextStyle(color: Color(0xFF5C4057),fontWeight: FontWeight.bold),),
             children: [
               SimpleDialogOption(
-                child: Text("Capture with Camera",style: TextStyle(color: Colors.green,)),
+                child: Text("Capture with Camera",style: TextStyle(color: Color(0xFF5C4057))),
                 onPressed: capturePhotoWithCamera,
               ),
               SimpleDialogOption(
-                child: Text("Select from gallery",style: TextStyle(color: Colors.green,)),
+                child: Text("Select from gallery",style: TextStyle(color: Color(0xFF5C4057))),
                 onPressed: pickPhotoFromGallery,
               ),
               SimpleDialogOption(
-                child: Text("Cancel",style: TextStyle(color: Colors.green,)),
+                child: Text("Cancel",style: TextStyle(color: Color(0xFF5C4057))),
                 onPressed: ()
                 {
                   Navigator.pop(context);
@@ -289,21 +294,15 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-              colors: [Colors.pink, Colors.lightGreenAccent],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(1.0,0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp,
-            ),
+           color: Color(0xFF5C4057),
           ),
         ),
         leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: clearFormInfo),
-        title: Text("New Product",style: TextStyle(color: Colors.white, fontSize: 24.0,fontWeight: FontWeight.bold,),),
+        title: Text("New Product",style: TextStyle(color: Colors.white, fontSize: 24.0,fontFamily: 'Poppins'),),
         actions: [
           TextButton(
             onPressed: uploading ? null : ()=> uploadImageAndSaveItemInfo() ,
-            child: Text("Add", style: TextStyle(color:Colors.pink, fontSize: 16.0, fontWeight: FontWeight.bold,),),
+            child: Text("Add", style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold,),),
           ),
         ],
       ),
@@ -326,7 +325,7 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
           Padding(padding: EdgeInsets.only(top: 12.0)),
 
           ListTile(
-            leading: Icon(Icons.perm_device_information, color: Colors.pink,),
+            leading: Icon(Icons.short_text, color: Color(0xFF5C4057)),
             title: Container(
               width: 250.0,
               child: TextField(
@@ -334,24 +333,21 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
                 controller: _shortInfotextEditingController,
                 decoration: InputDecoration(
                   hintText: "Short Info",
-                  hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                   border: InputBorder.none,
                 ),
               ),
             ),
           ),
-          Divider(color: Colors.pink,),
+          Divider(color: Color(0xFF5C4057),),
 
           ListTile(
-            leading: Icon(Icons.perm_device_information, color: Colors.pink,),
+            leading: Icon(Icons.title, color: Color(0xFF5C4057)),
             title: Container(
               width: 250.0,
               child: TextField(
-                style: TextStyle(color: Colors.deepPurpleAccent),
                 controller: _titletextEditingController,
                 decoration: InputDecoration(
                   hintText: "Title",
-                  hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                   border: InputBorder.none,
                 ),
               ),
@@ -361,34 +357,30 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
           Divider(color: Colors.pink,),
 
           ListTile(
-            leading: Icon(Icons.perm_device_information, color: Colors.pink,),
+            leading: Icon(Icons.description, color: Color(0xFF5C4057)),
             title: Container(
               width: 250.0,
               child: TextField(
-                style: TextStyle(color: Colors.deepPurpleAccent),
                 controller: _descriptiontextEditingController,
                 decoration: InputDecoration(
                   hintText: "Description",
-                  hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                   border: InputBorder.none,
                 ),
               ),
             ),
           ),
 
-          Divider(color: Colors.pink,),
+          Divider(color: Color(0xFF5C4057)),
 
           ListTile(
-            leading: Icon(Icons.perm_device_information, color: Colors.pink,),
+            leading: Icon(Icons.monetization_on_rounded, color: Color(0xFF5C4057)),
             title: Container(
               width: 250.0,
               child: TextField(
                 keyboardType: TextInputType.number,
-                style: TextStyle(color: Colors.deepPurpleAccent),
                 controller: _pricetextEditingController,
                 decoration: InputDecoration(
                   hintText: "Price",
-                  hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                   border: InputBorder.none,
                 ),
               ),

@@ -39,8 +39,8 @@ class _ItemViewState extends State<ItemView> {
             ),
             centerTitle: true,
             title: Text(
-              "DROP IT",
-              style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
+              "View Item",
+              style: TextStyle(fontSize: 25.0, color:Color(0xFF5C4057), fontFamily: "Poppins-Medium" ),
 
             ),
 
