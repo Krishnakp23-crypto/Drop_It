@@ -13,17 +13,13 @@ class AdminSignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 130.0,
         flexibleSpace: Container(
           decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFF5C4057), Color(0xFFFDBE3B)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
+             color:  Color(0xFFFDBE3B),
             ),
           ),
-        ),
+
         title: Text(
           "DROP IT",
           style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
@@ -55,22 +51,17 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
    double _screenWidth = MediaQuery.of(context).size.width,_screenHeight = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Container(
-        decoration: new BoxDecoration(
-            gradient: new LinearGradient(
-             colors: [Color(0xFFFDBE3B), Color(0xFF5C4057)],
-             begin: const FractionalOffset(0.0, 0.0),
-             end: const FractionalOffset(1.0,0.0),
-             stops: [0.0, 1.0],
-             tileMode: TileMode.clamp,
-            ),
+          decoration: new BoxDecoration(
+            color:  Color(0xFFFDBE3B),
           ),
         child:Column(
          mainAxisSize: MainAxisSize.max,
          children: [
            Container(
              child: Image.asset(
-               "images/admin.png",
+               "assets/icons/admin.png",
                height: 240.0,
+               color: Color(0xFF5C4057),
                width: 240.0,
               ),
             ),
@@ -156,7 +147,6 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
         }
         else
         {
-          //Scaffold.of(context).showSnackBar(SnackBar(content: Text("Welcome Dear Admin"+ result.get(['name']))));
           setState(() {
             _adminIDTextEditingController.text = "";
             _passwordTextEditingController.text = "";
