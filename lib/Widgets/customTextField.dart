@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget
 
 
   CustomTextField(
-      {Key key, this.controller, this.data, this.hintText,this.isObsecure}
+      {Key key, this.controller, this.data, this.hintText,this.isObsecure, Icon suffixIcon}
       ) : super(key: key);
 
 

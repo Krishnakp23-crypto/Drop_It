@@ -15,8 +15,6 @@ import 'Counters/cartitemcounter.dart';
 import 'Counters/changeAddresss.dart';
 import 'Counters/totalMoney.dart';
 import 'Store/storehome.dart';
-
-
 Future<void> main() async
 {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,12 +36,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (c)=>TotalAmount()),
       ],
       child:MaterialApp(
-        title: 'e-Shop',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Color(0xFFFDBE3B),
-       ),
-        home: SplashScreen()
+          title: 'e-Shop',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Color(0xFFFDBE3B),
+          ),
+          home: SplashScreen()
       ),
     );
   }
@@ -59,8 +57,8 @@ class _SplashScreenState extends State<SplashScreen>
 {
   @override
   void initState() {
-     super.initState();
-     displaySplash();
+    super.initState();
+    displaySplash();
   }
 
   displaySplash()
@@ -69,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen>
       if( await DropItApp.auth.currentUser != null)
       {
         Route route = MaterialPageRoute(builder: (_) => StoreHome());
-        Navigator.pushReplacement(context, route); 
+        Navigator.pushReplacement(context, route);
       }
       else
       {
@@ -82,22 +80,17 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: new BoxDecoration(
-            color: Colors.white
+        color: Color(0xFFFDBE3B),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/in.png",width: 300.0,),
+              SizedBox(height: 20.0),
+
+            ],
+          ),
         ),
-      
-       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("images/welcome.png"),
-            Text(
-              "DROP IT",
-              style: TextStyle(color: Color(0xFF5C4057),height: 30.0,fontWeight: FontWeight.bold),
-           ),
-          ],
-        ),
-       ),
       ),
     );
   }

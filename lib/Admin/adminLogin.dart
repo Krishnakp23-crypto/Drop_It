@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_shop/Admin/adminStockDetails.dart';
 import 'package:e_shop/Authentication/authenication.dart';
 import 'package:e_shop/Widgets/customTextField.dart';
 import 'package:e_shop/DialogBox/errorDialog.dart';
 import 'package:flutter/material.dart';
-
+import 'package:e_shop/Admin/adminStockDetails.dart';
 
 
 
@@ -13,14 +12,16 @@ class AdminSignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80.0,
         flexibleSpace: Container(
           decoration: new BoxDecoration(
-            color: Color(0xFF5C4057)
+            color:  Color(0xFF5C4057),
           ),
         ),
+
         title: Text(
           "DROP IT",
-          style: TextStyle(fontSize: 40.0, color: Colors.white, fontFamily: "Poppins" ),
+          style: TextStyle(fontSize: 40.0, color:Color(0xFFFDBE3B), fontFamily: "Poppins" ),
 
         ),
         centerTitle: true,
@@ -43,110 +44,108 @@ class _AdminSignInScreenState extends State<AdminSignInScreen>
   final TextEditingController _passwordTextEditingController = TextEditingController();
 
 
-  
-
 
   @override
   Widget build(BuildContext context) {
-   double _screenWidth = MediaQuery.of(context).size.width,_screenHeight = MediaQuery.of(context).size.height;
+    double _screenWidth = MediaQuery.of(context).size.width,_screenHeight = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
-      child: Container(
-        decoration: new BoxDecoration(
-            color: Color(0xFFFDBE3B)
-          ),
-        child:Column(
-         mainAxisSize: MainAxisSize.max,
-         children: [
-           Container(
-             child: Image.asset(
-               "images/admin.png",
-               height: 240.0,
-               width: 240.0,
-              ),
+        child: Container(
+            decoration: new BoxDecoration(
+              color:  Color(0xFFFDBE3B),
             ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Admin Login",
-              style: TextStyle(color: Colors.white,fontSize: 28.0,fontWeight: FontWeight.bold ),
-            ),
-          ),
-           Form(
-             key: _formkey,
-             child: Column(
-                children: [
-                  CustomTextField(
-                    controller: _adminIDTextEditingController,
-                    data: Icons.person,
-                    hintText: "Admin Id",
-                    isObsecure: false,
+            child:Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  child: Image.asset(
+                    "assets/images/box 2.png",
+                    height: 330.0,
+                    color: Color(0xFF5C4057),
+                    width: 330.0,
                   ),
-                   CustomTextField(
-                    controller: _passwordTextEditingController,
-                    data: Icons.person,
-                    hintText: "Password",
-                    isObsecure: true,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "ADMIN",
+                    style: TextStyle(color: Color(0xFF5C4057),fontSize: 28.0,fontWeight: FontWeight.bold ),
                   ),
-                ],
-             ),
-           ),
-            MaterialButton(
-             onPressed: () {
-               _adminIDTextEditingController.text.isNotEmpty
-                && _passwordTextEditingController.text.isNotEmpty
-                ? loginAdmin()
-                :showDialog(
-                   context: context,
-                   builder: (c)
-                   {
-                     return ErrorAlertDialog(message:"Please write email and password.", );
-                   }
-                );
-              },
-             color: Color(0xFF5C4057),
-             child: Text("Login", style: TextStyle(color: Colors.white),
-             ),
-            ),
-           SizedBox(
-             height:50.0,
-           ),
-           Container(
-             height: 4.0,
-             width: _screenWidth * 0.1,
-             color:Color(0xFF5C4057),
-           ),
-           SizedBox(
-             height: 20.0,
-           ),
-           TextButton.icon(
-            onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> AuthenticScreen())),
-            icon: (Icon(Icons.nature_people,color:Color(0xFF5C4057),)),
-            label: Text("I am not an Admin",style: TextStyle(color: Color(0xFF5C4057),fontWeight: FontWeight.bold),),
-           ),
-           SizedBox(
-             height: 50.0,
-           ),
-         ],
+                ),
+                Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: _adminIDTextEditingController,
+                        data: Icons.person,
+                        hintText: "Id",
+                        isObsecure: false,
+                      ),
+                      CustomTextField(
+                        controller: _passwordTextEditingController,
+                        data: Icons.person,
+                        hintText: "Password",
+                        isObsecure: true,
+                      ),
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    _adminIDTextEditingController.text.isNotEmpty
+                        && _passwordTextEditingController.text.isNotEmpty
+                        ? loginAdmin()
+                        :showDialog(
+                        context: context,
+                        builder: (c)
+                        {
+                          return ErrorAlertDialog(message:"Please fill up email and password.", );
+                        }
+                    );
+                  },
+                  color: Color(0xFF5C4057),
+                  child: Text("Login", style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height:50.0,
+                ),
+                Container(
+                  height: 4.0,
+                  width: _screenWidth * 0.8,
+                  color:Color(0xFF5C4057),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                TextButton.icon(
+                  onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> AuthenticScreen())),
+                  icon: (Icon(Icons.nature_people,color:Color(0xFF5C4057),)),
+                  label: Text("I am not an Admin",style: TextStyle(color: Color(0xFF5C4057),fontWeight: FontWeight.bold),),
+                ),
+                SizedBox(
+                  height: 50.0,
+                ),
+              ],
+            )
         )
-      )
     );
   }
 
-  loginAdmin() 
+  loginAdmin()
   {
     FirebaseFirestore.instance.collection("admins").get().then((snapshot){
       snapshot.docs.forEach((result) {
-       if(result.get("id") !=_adminIDTextEditingController.text.trim())
+        if(result.get("id") !=_adminIDTextEditingController.text.trim())
         {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Your ID is not correct")));
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Incorrect ID")));
         }
         else if(result.get("password") !=_passwordTextEditingController.text.trim())
         {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Your password is not correct")));
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Incorrect Password")));
         }
         else
         {
-          //Scaffold.of(context).showSnackBar(SnackBar(content: Text("Welcome Dear Admin"+ result.get(['name']))));
           setState(() {
             _adminIDTextEditingController.text = "";
             _passwordTextEditingController.text = "";

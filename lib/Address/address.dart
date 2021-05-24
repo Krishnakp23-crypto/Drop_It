@@ -54,8 +54,8 @@ class _AddressState extends State<Address>
         ),
         centerTitle: true,
         title: Text(
-          "DROP IT",
-          style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
+          "Select Address",
+          style: TextStyle(fontSize: 25.0, color:Color(0xFF5C4057), fontFamily: "Poppins" ),
 
         ),
         actions: [
@@ -106,10 +106,6 @@ class _AddressState extends State<Address>
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Select Address",
-                  style: TextStyle(color: Color(0xFF5C4057), fontWeight: FontWeight.bold, fontSize: 20.0,),                
-                ),
               ),
             ),
             Consumer<AddressChanger>(builder: (context,address,c){

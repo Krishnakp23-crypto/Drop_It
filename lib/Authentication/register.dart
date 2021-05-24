@@ -48,7 +48,7 @@ class _RegisterState extends State<Register>
                     : null,
               ),
             ),
-           SizedBox(height:8.0,),
+           SizedBox(height:10.0,),
            Form(
              key: _formkey,
              child: Column(

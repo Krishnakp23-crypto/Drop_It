@@ -45,8 +45,8 @@ class _ProductPageState extends State<ProductPage> {
          ),
          centerTitle: true,
          title: Text(
-          "DROP IT product page",
-          style: TextStyle(fontSize: 55.0, color:Color(0xFF5C4057), fontFamily: "Signatra" ),
+          "View Product",
+          style: TextStyle(fontSize: 25.0, color:Color(0xFF5C4057), fontFamily: "Poppins" ),
 
          ),
          actions: [
@@ -150,13 +150,7 @@ class _ProductPageState extends State<ProductPage> {
                         onTap: ()=> checkItemInCart(widget.itemModel.shortInfo, context) ,
                         child: Container(
                            decoration: new BoxDecoration(
-                            gradient: new LinearGradient(
-                              colors: [Color(0xFFFDBE3B),Color(0xFF5C4057)],
-                              begin: const FractionalOffset(0.0, 0.0),
-                              end: const FractionalOffset(1.0,0.0),
-                              stops: [0.0, 1.0],
-                              tileMode: TileMode.clamp,
-                            ),
+                            color: Color(0xFF5C4057)
                           ),
                           width: MediaQuery.of(context).size.width - 40.0 ,
                           height: 50.0,

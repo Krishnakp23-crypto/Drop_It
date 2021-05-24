@@ -92,9 +92,11 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
+          label: Text("Add new Item"),
+          backgroundColor:  Color(0xFF5C4057),
+          icon: Icon(Icons.shopping_bag_outlined),
           onPressed: ()=> takeImage(context),
-          child: Icon(Icons.add),
         ),
       ),
     );
@@ -190,7 +192,7 @@ class _StockDetailsState extends State<StockDetails> with AutomaticKeepAliveClie
                                     (model.status).toString(),
                                     style: TextStyle(
                                       fontSize: 15.0,
-                                      color: Colors.black,
+                                      color: Colors.green,
                                     ),
                                   ),
                                 ],

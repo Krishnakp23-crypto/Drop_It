@@ -3,11 +3,12 @@ import 'package:e_shop/Widgets/customTextField.dart';
 import 'package:e_shop/DialogBox/errorDialog.dart';
 import 'package:e_shop/DialogBox/loadingDialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Store/storehome.dart';
 import 'package:e_shop/Config/config.dart';
+
+import 'reset.dart';
 
 
 class Login extends StatefulWidget {
@@ -28,83 +29,86 @@ class _LoginState extends State<Login>
   Widget build(BuildContext context) {
     double _screenWidth = MediaQuery.of(context).size.width,_screenHeight = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
-      child: Container(
-        child:Column(
-         mainAxisSize: MainAxisSize.max,
-         children: [
-           Container(
-          margin: EdgeInsets.all(30),
-             child: Image.asset(
-               "assets/images/logo.png",
-               height: 240.0,
-               width: 240.0,
-             ),
-           ),
-          Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text(
-              "LOGIN",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          ),
-           Form(
-             key: _formkey,
-             child: Column(
-                children: [
-                  CustomTextField(
-                    controller: _emailTextEditingController,
-                    data: Icons.email,
-                    hintText: "Email",
-                    isObsecure: false,
+        child: Container(
+            child:Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(30),
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    height: 240.0,
+                    width: 240.0,
                   ),
-                   CustomTextField(
-                    controller: _passwordTextEditingController,
-                    data: Icons.person,
-                    hintText: "Password",
-                    isObsecure: true,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                ),
+                Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: _emailTextEditingController,
+                        data: Icons.email,
+                        hintText: "Email",
+                        isObsecure: false,
+                      ),
+                      CustomTextField(
+                        controller: _passwordTextEditingController,
+                        data: Icons.person,
+                        hintText: "Password",
+                        isObsecure: true,
+                      ),
+                    ],
                   ),
-                ],
-             ),
-           ),
-            RaisedButton(
-             onPressed: () {
-               _emailTextEditingController.text.isNotEmpty
-                && _passwordTextEditingController.text.isNotEmpty
-                ? loginUser()
-                :showDialog(
-                   context: context,
-                   builder: (c)
-                   {
-                     return ErrorAlertDialog(message:"Please write email and password.", );
-                   }
-                );
-             },
-             color: Color(0xFF5C4057),
-             child: Text("Login", style: TextStyle(color: Colors.white),
-             ),
-           ),
-           SizedBox(
-             height:50.0,
-           ),
-           Container(
-             height: 4.0,
-             width: _screenWidth * 0.8,
-             color:Color(0xFF5C4057),
-           ),
-           SizedBox(
-             height: 10.0,
-           ),
-           FlatButton.icon(
-            onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> AdminSignInPage())),
-            icon: (Icon(Icons.nature_people,color: Color(0xFF5C4057),)),
-            label: Text("I am an Admin",style: TextStyle(color: Color(0xFF5C4057),fontWeight: FontWeight.bold),),
-           ),
-         ],
+                ),
+                TextButton(
+                  onPressed:()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ResetPage())),
+                  child:Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: Color.fromRGBO(100, 61, 93, 1),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),),
+                RaisedButton(
+                  onPressed: () {
+                    _emailTextEditingController.text.isNotEmpty
+                        && _passwordTextEditingController.text.isNotEmpty
+                        ? loginUser()
+                        :showDialog(
+                        context: context,
+                        builder: (c)
+                        {
+                          return ErrorAlertDialog(message:"Please write email and password.", );
+                        }
+                    );
+                  },
+                  color: Color(0xFF5C4057),
+                  child: Text("Login", style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height:30.0,
+                ),
+                Container(
+                  height: 4.0,
+                  width: _screenWidth * 0.8,
+                  color:Color(0xFF5C4057),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                TextButton.icon(
+                  onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=> AdminSignInPage())),
+                  icon: (Icon(Icons.nature_people,color: Color(0xFF5C4057),)),
+                  label: Text("I am an Admin",style: TextStyle(color: Color(0xFF5C4057),fontWeight: FontWeight.bold),),
+                ),
+              ],
+            )
         )
-      )
     );
   }
 
@@ -112,35 +116,35 @@ class _LoginState extends State<Login>
   void loginUser() async
   {
     showDialog(
-      context: context, 
-      builder: (c)
-      {
-        return LoadingAlertDialog(message:"Authenticating. Please wait..",);
-      }
+        context: context,
+        builder: (c)
+        {
+          return LoadingAlertDialog(message:"Authenticating. Please wait..",);
+        }
     );
-   User firebaseUser;
+    User firebaseUser;
     await _auth.signInWithEmailAndPassword(
-      email: _emailTextEditingController.text.trim(), 
+      email: _emailTextEditingController.text.trim(),
       password: _passwordTextEditingController.text.trim(),
     ).then((authUser){
       firebaseUser = authUser.user ;
     }).catchError((error){
       Navigator.pop(context);
       showDialog(
-        context: context,
-        builder: (c)
-       {
-        return ErrorAlertDialog(message: error.message.toString(),);
-       }  
+          context: context,
+          builder: (c)
+          {
+            return ErrorAlertDialog(message: error.message.toString(),);
+          }
       );
     });
     if(firebaseUser !=null)
     {
       readData(firebaseUser).then((s){
-       Navigator.pop(context);
-       Route route = MaterialPageRoute(builder: (c) => StoreHome());
-       Navigator.pushReplacement(context, route);
-     });
+        Navigator.pop(context);
+        Route route = MaterialPageRoute(builder: (c) => StoreHome());
+        Navigator.pushReplacement(context, route);
+      });
     }
   }
 
@@ -161,4 +165,3 @@ class _LoginState extends State<Login>
     });
   }
 }
-

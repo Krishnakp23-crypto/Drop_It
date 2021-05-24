@@ -3,7 +3,6 @@ import 'login.dart';
 import 'register.dart';
 import 'package:e_shop/Config/config.dart';
 
-
 class AuthenticScreen extends StatefulWidget {
   @override
   _AuthenticScreenState createState() => _AuthenticScreenState();
@@ -36,7 +35,7 @@ class _AuthenticScreenState extends State<AuthenticScreen> {
             ),
             Tab(
               icon: Icon(Icons.person, color: Color(0xFF5C4057),),
-              text: "SIGN UP",
+              text: "Register",
             ),
           ],
           indicatorColor: Colors.white38,
